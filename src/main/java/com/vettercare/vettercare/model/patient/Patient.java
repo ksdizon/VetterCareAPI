@@ -1,5 +1,6 @@
 package com.vettercare.vettercare.model.patient;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.vettercare.vettercare.model.owner.Owner;
 import jakarta.persistence.*;
 
@@ -13,6 +14,7 @@ public class Patient {
 
     @ManyToOne
     @JoinColumn(name = "ownerId", nullable = false)
+    @JsonBackReference
     private Owner owner;
 
     private String name;
@@ -22,10 +24,13 @@ public class Patient {
     private double weight;
     private String gender;
 
-    public Patient(Owner owner, String name, String species, int age, double weight, String gender) {
+    public Patient() {}
+
+    public Patient(Owner owner, String name, String species, String breed, int age, double weight, String gender) {
         this.owner = owner;
         this.name = name;
         this.species = species;
+        this.breed = breed;
         this.age = age;
         this.weight = weight;
         this.gender = gender;

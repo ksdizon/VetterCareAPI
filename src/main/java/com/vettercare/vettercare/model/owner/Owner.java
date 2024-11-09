@@ -1,5 +1,6 @@
 package com.vettercare.vettercare.model.owner;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.vettercare.vettercare.model.patient.Patient;
 import jakarta.persistence.*;
 
@@ -18,13 +19,15 @@ public class Owner {
     private String address;
 
     @OneToMany(mappedBy = "owner")
+    @JsonManagedReference
     private List<Patient> pets;
 
-    public Owner(String ownerFirstName, String ownerLastName, String address, List<Patient> pets) {
+    public Owner() {}
+
+    public Owner(String ownerFirstName, String ownerLastName, String address) {
         this.ownerFirstName = ownerFirstName;
         this.ownerLastName = ownerLastName;
         this.address = address;
-        this.pets = pets;
     }
 
     public Long getOwnerId() {
