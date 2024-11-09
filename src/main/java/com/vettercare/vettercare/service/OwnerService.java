@@ -37,4 +37,11 @@ public class OwnerService {
         }
     }
 
+    public void deleteOwner(Long id) {
+        if (ownerRepository.existsById(id)) {
+            ownerRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Owner not found with id: " + id);
+        }
+    }
 }

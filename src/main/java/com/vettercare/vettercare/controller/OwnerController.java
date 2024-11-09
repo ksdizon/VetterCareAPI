@@ -49,4 +49,14 @@ public class OwnerController {
     public void addNewOwner(@RequestBody Owner owner) {
         ownerService.addOwner(owner);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<HttpStatus> removeOwner(@PathVariable Long id) {
+        try {
+            ownerService.deleteOwner(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
