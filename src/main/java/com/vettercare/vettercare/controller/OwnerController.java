@@ -50,6 +50,16 @@ public class OwnerController {
         ownerService.addOwner(owner);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<HttpStatus> updateOwnerDetails(@PathVariable Long id, @RequestBody Owner owner) {
+        try {
+            ownerService.updateOwnerDetails(id, owner);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (RuntimeException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> removeOwner(@PathVariable Long id) {
         try {
