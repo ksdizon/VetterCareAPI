@@ -4,7 +4,6 @@ import com.vettercare.vettercare.model.owner.Owner;
 import com.vettercare.vettercare.repository.OwnerRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -43,11 +42,10 @@ public class OwnerService {
         Optional<Owner> ownerToUpdate = ownerRepository.findById(id);
 
         if (ownerToUpdate.isPresent()) {
-            System.out.println("IS PRESENT BROO");
             ownerToUpdate.get().setOwnerFirstName(owner.getOwnerFirstName());
             ownerToUpdate.get().setOwnerLastName(owner.getOwnerLastName());
             ownerToUpdate.get().setAddress(owner.getAddress());
-            
+
             ownerRepository.save(ownerToUpdate.get());
         } else {
             throw new RuntimeException("Owner not found with id: " + id);
