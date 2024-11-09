@@ -27,7 +27,14 @@ public class OwnerService {
     }
 
     public void addOwner(Owner owner) {
-        this.ownerRepository.save(owner);
+        if (ownerRepository.findByOwnerFirstNameAndOwnerLastNameAndAddress(owner.getOwnerFirstName(),
+                owner.getOwnerLastName(),
+                owner.getAddress())
+                .isEmpty()) {
+            this.ownerRepository.save(owner);
+        } else {
+            System.out.println("Owner already exists");
+        }
     }
 
 }
