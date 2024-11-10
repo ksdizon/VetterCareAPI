@@ -36,4 +36,12 @@ public class PatientService {
     public void addPatient(Patient patient) {
         patientRepository.save(patient);
     }
+
+    public void deletePatient(Long id) {
+        if (patientRepository.existsById(id)) {
+            patientRepository.deleteById(id);
+        } else {
+            throw new RuntimeException("Patient with id " + id + " does not exists");
+        }
+    }
 }
