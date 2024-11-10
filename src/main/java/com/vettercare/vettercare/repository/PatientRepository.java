@@ -9,9 +9,9 @@ import java.util.List;
 @Repository
 public interface PatientRepository extends JpaRepository<Patient, Long> {
 
-    List<Patient> filterBySpecies(String species) ;
+        List<Patient> findBySpecies(String species) ;
 
-    List<Patient> filterByBreed(String breed);
+        List<Patient> findByBreed(String breed);
 
-    List<Patient> filterBySpeciesAndBreed(String species, String breed);
+        List<Patient> findBySpeciesAndBreed(String species, String breed);
 }
