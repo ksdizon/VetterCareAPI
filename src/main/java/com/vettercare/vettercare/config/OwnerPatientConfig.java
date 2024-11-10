@@ -42,6 +42,9 @@ public class OwnerPatientConfig {
 
             Patient patient4 = new Patient(owner2, "Bragi", "Dog", "Aspin", 1, 15.0, "Male");
             patientService.addPatient(patient4);
+
+            Patient patient5 = new Patient(owner2, "Sori", "Cat", "Siamese", 16, 4.0, "Female");
+            patientService.addPatient(patient5);
         };
     }
 }
